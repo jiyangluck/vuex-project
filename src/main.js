@@ -1,30 +1,13 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+
+import App from './components/App.vue';
+import store from './store/index.js';
 
 Vue.config.debug = true;
-Vue.use(Vuex);
-
-const store =new Vuex.Store({
-	state:{
-		count:0
-	},
-	mutations:{
-		add(state){
-			state.count++
-		}
-	}
-})
 
 new Vue({
 	el:'#app',
-	methods:{
-		add(){
-			store.commit("add");
-		}
-	},
-	computed:{
-		message(){
-			return store.state.count;
-		}
-	}
+	components:{App},
+	//向vue中注入store，vue实例可以通过this.$store获取store
+	store   
 })
